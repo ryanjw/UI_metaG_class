@@ -3,6 +3,7 @@ install.packages("vegan")
 install.packages("ggplot2")
 install.packages("reshape2")
 install.packages("TSA")
+install.packages("plyr")
 
 # Say you want to simulate a community
 
@@ -138,7 +139,7 @@ func(df$abundance)
 # this changes b, the amount of bimodality to a level that is worth noting (CRT).
 
 
-# Now we are going to test whether or not some way of handling the data (in this case, rarefaction) may bias CRT.  We are going to simulate a community that only varies based on rarefaction (in other words, we will resample the same OTU distribution over and over again).  We are simulating a community that is similar to the M3 right palm community as in the paper (8,230 OTUs, 5,031 reads per sample)
+# Now we are going to test whether or not some way of handling the data (in this case, rarefaction) may bias CRT.  We are going to simulate a community that only varies based on rarefaction (in other words, we will resample the same OTU distribution over and over again).  We are simulating a community that is similar to the M3 right palm community as in the paper (8,230 OTUs, 5,031 reads per sample).  NOTE I am working on a publication related to this problem, so if you are interested in more info,  please contact me!
 
 rank<-seq(1,8230,1)
 df<-data.frame(rank)
@@ -169,7 +170,6 @@ m_melt<-melt(m, id="x")
 ggplot(m_melt)+geom_point(aes(x=x,y=value,colour=variable))+scale_x_log10()
 
 #seems to be pretty close visually, yet we know there is some loss of information
-
 #now we want to generate this same rarefaction step over a time series.  We are going to assume a time series as we did previously t={1,...,100}
 df$rel_ab<-fseries(df$rank,.99)
 df$rel_ab<-df$rel_ab/sum(df$rel_ab)
