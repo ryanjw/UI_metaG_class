@@ -27,9 +27,9 @@ for(i in 1:10000){
 
 rank<-seq(1,10000,1)
 df<-data.frame(otus,rank)
-
+head(df)
 df$rel_ab<-fseries(df$rank,.99)
-
+df$rel_ab<-df$rel_ab/sum(df$rel_ab)
 #lets check our dataframe
 head(df)
 tail(df)
