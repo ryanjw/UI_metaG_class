@@ -5,6 +5,11 @@ install.packages("reshape2")
 install.packages("TSA")
 install.packages("plyr")
 
+library(vegan)
+library(ggplot2)
+library(reshape2)
+library(TSA)
+library(plyr)
 # Say you want to simulate a community
 
 # We can use a fisher's series to produce a right-skewed distribution broken into discrete chunks, and then we will apply these relative abundances (probability that an OTU exists in a sample) to a set of OTU id's
